@@ -1,0 +1,7 @@
+#!/bin/sh 
+
+BASE="`dirname $0`/.."
+
+java \
+    -Xbootclasspath/a:$BASE/config/config.jar \
+    -jar $BASE/lib/ant-launcher.jar $*

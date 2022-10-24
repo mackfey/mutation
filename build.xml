@@ -1,0 +1,147 @@
+<project name="Triangle" default="compile" basedir=".">
+
+<!-- Directories that hold coverage and mutation results -->
+    <property name="dir.mut" value="mutation_results"/>
+    <property name="dir.cov" value="coverage_results"/>
+
+<!-- Configuration for cobertura -->
+    <path id="cobertura.classpath">
+        <fileset dir="lib">
+            <include name="cobertura-2.0.3.jar" />
+            <include name="cobertura-lib/**/*.jar" />
+        </fileset>
+    </path>
+    <taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
+
+<!-- Target to clean up -->
+    <target name="clean" description="Clean">
+        <delete dir="bin"/>
+        <delete>
+            <fileset dir="." includes="*.ser"/>
+        </delete>
+       <delete dir="${dir.cov}"/>
+       <delete dir="${dir.mut}"/>
+    </target>
+
+<!-- Target to initialize build -->
+    <target name="init">
+        <mkdir dir="bin"/>
+    </target>
+
+<!-- Target to compile the project -->
+    <target name="compile" depends="init" description="Compile">
+        <javac includeantruntime="true"
+               srcdir="src"
+               destdir="bin"
+               source="1.7"
+               target="1.7"
+             compiler="javac1.7"
+               nowarn="true"
+                debug="yes">
+        </javac>
+    </target>
+
+<!-- Target to compile the test suite -->
+    <target name="compile.tests" depends="compile" description="Compile all tests">
+        <javac includeantruntime="true"
+               srcdir="test"
+              destdir="bin"
+               source="1.7"
+               target="1.7"
+             compiler="javac1.7"
+               nowarn="true"
+                debug="yes">
+                <classpath location="lib/junit-4.11.jar"/>
+        </javac>
+    </target>
+
+<!-- The original test target -->
+    <target name="test" depends="compile.tests" description="Run all unit test cases">
+        <echo message="Running unit tests ..."/>
+        <junit  printsummary="true"
+                  showoutput="true"
+                        fork="true"
+               haltonfailure="true">
+            <formatter type="plain" usefile="false"/>
+            <classpath path=".instrumented"/>
+            <classpath path="bin"/>
+            <classpath location="lib/junit-4.11.jar"/>
+            <classpath location="lib/cobertura-2.0.3.jar"/>
+
+            <batchtest fork="true">
+                <fileset dir="test">
+                    <include name="**/*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+<!-- Run mutation testing -->
+    <target name="mutation" depends="clean,init" description="Run mutation analysis for all unit test cases">
+        <echo message="Running mutation analysis ..."/>
+        <antcall target="compile.tests" />
+
+        <delete dir="${dir.mut}"/>
+        <mkdir dir="${dir.mut}"/>
+        <copy file=".mutated/mutants.log" tofile="${dir.mut}/mutants.log" />
+        <copy todir="${dir.mut}/mutants">
+            <fileset dir=".mutated/mutants" />
+        </copy>
+
+        <junit  printsummary="false"
+                  showoutput="false"
+            mutationAnalysis="true"
+                exportCovMap="true"
+               exportKillMap="false"
+                        sort="sort_methods"
+              mutantsLogFile="${dir.mut}/mutants.log"
+                  covMapFile="${dir.mut}/covMap.csv"
+                 killMapFile="${dir.mut}/killMap.csv"
+                 testMapFile="${dir.mut}/testMap.csv"
+                 summaryFile="${dir.mut}/summary.csv"
+                  resultFile="${dir.mut}/results.csv"
+             killDetailsFile="${dir.mut}/killed.csv">
+
+            <classpath path=".mutated"/>
+            <classpath path="bin"/>
+            <batchtest fork="false">
+                <fileset dir="test">
+                    <include name="**/*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+     </target>
+
+<!-- Coverage analysis -->
+    <target name="coverage" description="Run coverage analysis">
+        <antcall target="clean" />
+        <antcall target="compile" />
+        <cobertura-instrument failOnError="true" toDir=".instrumented">
+            <fileset dir="bin">
+                <include name="**/*.class"/>
+            </fileset>
+        </cobertura-instrument>
+
+        <antcall target="test" />
+
+        <delete dir="${dir.cov}"/>
+        <mkdir dir="${dir.cov}" />
+        <cobertura-report format="html" destdir="${dir.cov}" srcdir="src" />
+
+        <cobertura-report format="summaryXml" destdir="${dir.cov}" srcdir="src" />
+        <echo message="==================================================="/>
+        <echo message="Coverage results:"/>
+        <echo/>
+        <concat>
+            <fileset dir="${dir.cov}" includes="coverage-summary.xml"/>
+            <filterchain>
+                <linecontains>
+                    <contains value="coverage line"/>
+                </linecontains>
+            </filterchain>
+        </concat>
+        <echo message="==================================================="/>
+        <echo message="Coverage report (html): coverage_results/index.html"/>
+        <echo message="==================================================="/>
+    </target>
+</project>
