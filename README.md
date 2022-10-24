@@ -41,6 +41,8 @@ provide additional information:
 
     - *testMap.csv*: a mapping from test id (TestNo) to test name.
 
+##### Inspecting a mutant
+
 Rather than reading the mutants.log file, you can visualize the source code
 differences between a mutant and the original program by running:
 `./show_mutant.sh <mutant ID>`
