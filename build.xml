@@ -16,6 +16,7 @@
 <!-- Target to clean up -->
     <target name="clean" description="Clean">
         <delete dir="bin"/>
+        <delete dir=".instrumented"/>
         <delete>
             <fileset dir="." includes="*.ser"/>
         </delete>
