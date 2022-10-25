@@ -2,6 +2,7 @@ package triangle;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Locale;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +21,9 @@ import static triangle.Triangle.Type.*;
  */
 @RunWith(Parameterized.class)
 public class TriangleTest {
+  static {
+    Locale.setDefault(Locale.GERMAN);
+  }
   @Parameter(0)
   public int a;
   @Parameter(1)
