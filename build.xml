@@ -92,6 +92,7 @@
         <junit  printsummary="false"
                   showoutput="false"
             mutationAnalysis="true"
+               timeoutOffset="100"
                 exportCovMap="true"
                exportKillMap="false"
                         sort="sort_methods"
