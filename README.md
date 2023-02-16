@@ -43,9 +43,8 @@ provide additional information:
 
 ##### Inspecting a mutant
 
-Rather than reading the mutants.log file, you can visualize the source code
-differences between a mutant and the original program by running:
-`./show_mutant.sh <mutant ID>`
+Run `./show_mutant.sh <mutant ID>` to visualize the source code
+differences between a mutant and the original program by running.
 
 For example, the following command shows how mutant 1 differs from the original
 (i.e., unmutated) program:
@@ -53,9 +52,25 @@ For example, the following command shows how mutant 1 differs from the original
 
 The output is a unified diff that indicates what line the mutation changed:
 ```
+diff --git a/src/triangle/Triangle.java b/.mutated/mutants/1/triangle/Triangle.java
+index f31c52d..3b3899e 100644
 --- a/src/triangle/Triangle.java
 +++ b/.mutated/mutants/1/triangle/Triangle.java
-@@ -17,7 +17,7 @@ public class Triangle {
+@@ -3,50 +3,50 @@ package triangle;
+ /**
+  * An implementation that classifies triangles.
+  */
+ public class Triangle {
+
+     /**
+      * This enum gives the type of the triangle.
+      */
+     public static enum Type {
+         INVALID, SCALENE, EQUILATERAL, ISOSCELES
+     };
+
+     /**
+      * This static method does the actual classification of a triangle, given the lengths
       * of its three sides.
       */
      public static Type classify(int a, int b, int c) {
@@ -64,12 +79,38 @@ The output is a unified diff that indicates what line the mutation changed:
              return Type.INVALID;
          }
          int trian = 0;
+         if (a == b) {
+             trian = trian + 1;
+         }
+         if (a == c) {
+             trian = trian + 2;
+         }
+         if (b == c) {
+             trian = trian + 3;
+         }
+         if (trian == 0) {
+             if (a + b <= c || a + c <= b || b + c <= a) {
+                 return Type.INVALID;
+             } else {
+                 return Type.SCALENE;
+             }
+         }
+         if (trian > 3) {
+             return Type.EQUILATERAL;
+         }
+         if (trian == 1 && a + b > c) {
+             return Type.ISOSCELES;
+         } else if (trian == 2 && a + c > b) {
+             return Type.ISOSCELES;
+         } else if (trian == 3 && b + c > a) {
+             return Type.ISOSCELES;
+         }
+         return Type.INVALID;
+     }
+ }
 ```
-The line starting with `@@` indicates the line number of the first context line.
-By default, there are three context lines before the mutated line. In this
-example, line 17 is the first context line, and line 20 is the mutated line.
-The line starting with `- ` shows the removed line,
-and the line starting with `+ ` shows the line that replaced it.
+The line starting with `- ` shows the removed line (original program),
+and the line starting with `+ ` shows the line that replaced it (Mutant).
 
 ## Troubleshooting
 
