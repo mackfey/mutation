@@ -34,9 +34,9 @@
         <javac includeantruntime="true"
                srcdir="src"
                destdir="bin"
-               source="1.7"
-               target="1.7"
-             compiler="javac1.7"
+               source="1.8"
+               target="1.8"
+             compiler="javac1.8"
                nowarn="true"
                 debug="yes">
         </javac>
@@ -47,9 +47,9 @@
         <javac includeantruntime="true"
                srcdir="test"
               destdir="bin"
-               source="1.7"
-               target="1.7"
-             compiler="javac1.7"
+               source="1.8"
+               target="1.8"
+             compiler="javac1.8"
                nowarn="true"
                 debug="yes">
                 <classpath location="lib/junit-4.11.jar"/>
