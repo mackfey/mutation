@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'jacoco'
+    id 'org.barfuin.gradle.jacocolog' version '3.1.0'
 }
 
 repositories {
@@ -9,3 +11,5 @@ repositories {
 dependencies {
     testImplementation('junit:junit:4.11')
 }
+
+jacocoTestReport.dependsOn test
