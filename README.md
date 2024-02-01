@@ -1,6 +1,7 @@
 # Triangle
 Triangle is an example program for a software testing exercise that focuses on
 unit testing and test effectiveness, using code coverage criteria.
+The Triangle program comes with 150 mutants, in directory *.mutated/mutants*.
 
 #### How to build Triangle and run its tests from the terminal:
 
@@ -8,7 +9,7 @@ unit testing and test effectiveness, using code coverage criteria.
    file.
 
 2. Run `ant compile` to compile Triangle. The compiled class files will be in
-   the *bin* directory.
+   the *bin/* directory.
 
 4. Run `ant test` to run all Triangle unit tests.
 
@@ -50,7 +51,13 @@ For example, the following command shows how mutant 1 differs from the original
 (i.e., unmutated) program:
 `./show_mutant.sh 1`
 
-The output is a unified diff that indicates what line the mutation changed:
+The output is a unified diff that indicates what line the mutation changed.
+The line starting with `-` shows the removed line (original program),
+and the line starting with `+` shows the line that replaced it (mutant).
+A line starting with ` ` is the same in both files.
+
+Here is output of `./show_mutant.sh 1`:
+
 ```
 diff --git a/src/triangle/Triangle.java b/.mutated/mutants/1/triangle/Triangle.java
 index f31c52d..3b3899e 100644
@@ -109,8 +116,6 @@ index f31c52d..3b3899e 100644
      }
  }
 ```
-The line starting with `- ` shows the removed line (original program),
-and the line starting with `+ ` shows the line that replaced it (Mutant).
 
 ## Troubleshooting
 
