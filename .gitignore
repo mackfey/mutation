@@ -1,3 +1,4 @@
+bin/
 mutation_results/
 build/
 .gradle/
