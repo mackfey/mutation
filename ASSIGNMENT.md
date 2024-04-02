@@ -8,7 +8,7 @@ and (2) reason about test-goal utility.
 
 1. Use a Unix environment or Git bash on Windows for this exercise.
 Make sure [**Apache Ant**](http://ant.apache.org/),
-a [**Java 8+ 17 JDK**](https://www.oracle.com/java/technologies/downloads),
+a [**Java 8, 11, 17, or 21 JDK**](https://www.oracle.com/java/technologies/downloads),
 and [**Git**](https://git-scm.com/) are installed.
 
 2. Test your setup: compile and test the Triangle program.
