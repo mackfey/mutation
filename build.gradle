@@ -12,4 +12,15 @@ dependencies {
     testImplementation('junit:junit:4.11')
 }
 
-jacocoTestReport.dependsOn test
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    if (new File("/cse/web/homes").exists()) {
+        reports {
+            html.outputLocation = file("/cse/web/homes/" + System.env.USER + "/jacoco_report")
+        }
+    }
+}

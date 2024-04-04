@@ -12,11 +12,13 @@ The Triangle program comes with 150 mutants, in directory *.mutated/mutants*.
    the *build/classes/java/main/* directory.
 
 3. Run `./gradlew test` to run all Triangle unit tests. The test results are
-   available as html report: *build/reports/tests/test/index.html*.
+   available as a HTML report: *build/reports/tests/test/index.html*.
 
-4. Run `./gradlew jacocoTestReport` to produce a code coverage report. The
-   coverage results are printed to the console and are available as html report:
-   *build/reports/jacoco/test/html/index.html*.
+4. Run `./gradlew jacocoTestReport` to produce a code coverage report.
+   Coverage results are printed to the console and are available as
+   a HTML report: *build/reports/jacoco/test/html/index.html*.
+    * If you are running on a UW CSE machine such as attu, you will also find the report at
+      https://homes.cs.washington.edu/~$USER/jacoco_report , where $USER is your CSE NetID.
 
 #### Mutation analysis
 
