@@ -7,8 +7,7 @@ and (2) reason about test-goal utility.
 ## Setup
 
 1. Use a Unix environment or Git bash on Windows for this exercise.
-Make sure [**Apache Ant**](http://ant.apache.org/),
-a [**Java 8, 11, 17, or 21 JDK**](https://www.oracle.com/java/technologies/downloads),
+Make sure a [**Java 8, 11, 17, or 21 JDK**](https://www.oracle.com/java/technologies/downloads),
 and [**Git**](https://git-scm.com/) are installed.
 
 2. Test your setup: compile and test the Triangle program.
@@ -46,7 +45,7 @@ for more details.
           but the mutant fails.  Run `./gradlew clean test` after adding the new
           test to ensure that it passes on the original program.
 
-    c. Run mutation.sh and continue with step a.
+    c. Run `mutation.sh` and continue with step a.
 
     Note that you will likely observe certain patterns (i.e., similar mutants
     requiring similar tests) because of the systematic mutation of the source code
