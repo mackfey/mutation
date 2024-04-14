@@ -14,6 +14,8 @@ and [**Git**](https://git-scm.com/) are installed.
 
 3. Run `mutation.sh`.  The last line printed should start with:
    `Live mutants: 2 3 4 7 8 9 ...`
+   * *On Windows*: You may need to change `./gradlew` to `./gradlew.bat` on
+    line 9 of `mutation.xml`.
 
 You may use an experimental IntelliJ plugin for this exercise. See the
 [detailed
