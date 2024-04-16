@@ -49,14 +49,23 @@ public class TriangleTest {
   public static Collection testTable() {
     return Arrays.asList(new Object[][]
       {
+      {0, 1, 1, INVALID},  // 2 && 3
+      {-1, 1, 1, INVALID},  // 4
       {0, 0, 0, INVALID},
       {1, 0, 0, INVALID},
+      {1, 0, 1, INVALID},  // 7 && 8
+      {1, -1, 1, INVALID},  // 9
+      {1, 1, -1, INVALID},  // 18
       {1, 1, 0, INVALID},
+      {2, 3, 5, INVALID},  // 63
+      {2, 5, 3, INVALID},  // 70
+      {5, 2, 3, INVALID},  // 81
       {1, 2, 3, INVALID},
       {1, 3, 2, INVALID},
       {3, 1, 2, INVALID},
       {2, 3, 4, SCALENE},
       {1, 1, 1, EQUILATERAL},
+      {2, 2, 8, INVALID},  // need to do 105
       {2, 2, 1, ISOSCELES},
       {2, 1, 2, ISOSCELES},
       {1, 2, 2, ISOSCELES},
