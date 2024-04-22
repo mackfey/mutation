@@ -65,13 +65,23 @@ public class TriangleTest {
       {3, 1, 2, INVALID},
       {2, 3, 4, SCALENE},
       {1, 1, 1, EQUILATERAL},
-      {2, 2, 8, INVALID},  // need to do 105
       {2, 2, 1, ISOSCELES},
       {2, 1, 2, ISOSCELES},
       {1, 2, 2, ISOSCELES},
       {2, 2, 5, INVALID},
       {2, 5, 2, INVALID},
       {5, 2, 2, INVALID},
+      {1, 2, 4, INVALID},
+      {1, 4, 2, INVALID},
+      {4, 1, 2, INVALID},
+      {3, 5, 4, SCALENE}, //80
+      {3, 3, 8, INVALID},//105
+      {2, 2, 4, INVALID},//109
+      {2, 2, 3, ISOSCELES},//111
+      {3, 8, 3, INVALID},//122
+      {2, 4, 2, INVALID},//126
+      {8, 3, 3, INVALID},//139
+      {4, 2, 2, INVALID},//143
       }
     );
    }
