@@ -49,17 +49,9 @@ public class TriangleTest {
   public static Collection testTable() {
     return Arrays.asList(new Object[][]
       {
-      {0, 1, 1, INVALID},  // 2 && 3
-      {-1, 1, 1, INVALID},  // 4
       {0, 0, 0, INVALID},
       {1, 0, 0, INVALID},
-      {1, 0, 1, INVALID},  // 7 && 8
-      {1, -1, 1, INVALID},  // 9
-      {1, 1, -1, INVALID},  // 18
       {1, 1, 0, INVALID},
-      {2, 3, 5, INVALID},  // 63
-      {2, 5, 3, INVALID},  // 70
-      {5, 2, 3, INVALID},  // 81
       {1, 2, 3, INVALID},
       {1, 3, 2, INVALID},
       {3, 1, 2, INVALID},
@@ -71,17 +63,25 @@ public class TriangleTest {
       {2, 2, 5, INVALID},
       {2, 5, 2, INVALID},
       {5, 2, 2, INVALID},
-      {1, 2, 4, INVALID},
-      {1, 4, 2, INVALID},
-      {4, 1, 2, INVALID},
-      {3, 5, 4, SCALENE}, //80
-      {3, 3, 8, INVALID},//105
-      {2, 2, 4, INVALID},//109
-      {2, 2, 3, ISOSCELES},//111
-      {3, 8, 3, INVALID},//122
-      {2, 4, 2, INVALID},//126
-      {8, 3, 3, INVALID},//139
-      {4, 2, 2, INVALID},//143
+      {0, 1, 1, INVALID},  // 2 && 3
+      {-1, 1, 1, INVALID},  // 4
+      {1, 0, 1, INVALID},  // 7 && 8
+      {1, -1, 1, INVALID},  // 9
+      {1, 1, -1, INVALID},  // 18
+      {2, 3, 5, INVALID},  // 63
+      {1, 2, 4, INVALID},  // 67
+      {2, 5, 3, INVALID},  // 70
+      {1, 4, 2, INVALID},  // 74
+      {5, 7, 6, SCALENE},  // 80
+      {5, 2, 3, INVALID},  // 81
+      {4, 1, 2, INVALID},  // 85
+      {3, 3, 7, INVALID},  // 105
+      {3, 3, 6, INVALID},  // 109
+      {3, 7, 3, INVALID},  // 122
+      {3, 6, 3, INVALID},  // 126
+      {3, 6, 3, INVALID},  // 126
+      {7, 3, 3, INVALID},  // 139
+      {6, 3, 3, INVALID},  // 143
       }
     );
    }
